@@ -1,79 +1,72 @@
 
 
-// ========================================================
-//Define variables. Construct query URL to get recipe data.
-// ========================================================
 var queryURLbase = "https://api.edamam.com/search?&app_id=192e6853&app_key=97cc74f29550dbca8f09e9ac463a150f&from=0&to=9&q=";
-
-// ===========================================================================
-// This AJAX method performs a GET request to the queryURL to get recipe data.
-// After the data comes back, search results are displayed on cards.
-// ===========================================================================
-function testAjax(queryURL) {
+var ingShowList = [];
+function doAjax(queryURL) {
 	fetch(queryURL)
-	.then((resp) => resp.json())
-	.then(function (data) {
-        //console.log(queryURL);
-        console.log(data);
-        var elArray = [];
-        var elements =0;
-		for (var i = 0; i < 9; i++) {
+		.then((resp) => resp.json())
+		.then(function (data) {
+			console.log(data);
+			var elArray = [];
+			var elements = 0;
+			for (var i = 0; i < 9; i++) {
+				var ingList = $(`<table class="table">
+										<thead class="thead-dark">
+										<tr>
+											<th scope="col">Ingerediant</th>
+											<th scope="col">Weight(ounce)</th>
+										</tr>
+										</thead>
+										<tbody>`
+								);
+				for (var j = 0; j < data.hits[i].recipe.ingredientLines.length; j++) {
+					var ing = data.hits[i].recipe.ingredients[j].text;
+					var ingweight = data.hits[i].recipe.ingredients[j].weight;
+					ingList.append(`<tr class="table-warning"><td class="table-warning">${ing}</td><td class="table-warning">${ingweight}</td></tr>`)
 
-			//create recipe card.
-			var card = $('<div>');
-			//Make recipe search results section mobile responsive.
-			//On small screens, display one recipe per row.
-			//On medium screens, display two recipes per row.
-			//On large screens, display three recipes per row.
-            
+				}
+				ingShowList.push(ingList);
+				var card = $('<div>');
 
-			//Create variable for recipe image and append to card.
-			var img = $("<img>");
-			imgAPI = data.hits[i].recipe.image;
-			img.attr("src", imgAPI);
-			card.append(img);
+				var img = $("<img>");
+				imgAPI = data.hits[i].recipe.image;
+				img.attr("src", imgAPI);
+				card.append(img);
 
-			//Variable for the recipe title/label.
-			title = data.hits[i].recipe.label;
-			//This appends the recipe title/label to the recipe image.
-            
-            var link= $(`<a href="#" style="color:white" class="addVids">`);
-            link.text(title);
-            card.append(link);
-            // $('.recipeList').append(cardImg);
-            // alert(card.html());
-            elArray.push(card);
-            elements++;
-            if(elements == 3){
-                var flex = $('<div class="flex-container">');
-                flex.append(elArray);
-                $('.recipeList').append(flex);
-                elements = 0;
-                elArray=[];
-            }
+				title = data.hits[i].recipe.label;
 
-		};
-	});
+				var link = $(`<a type="button" data-content=${i} href="#" style="color:white;text-decoration:none" class="addVids">`);
+				link.text(title);
+				card.append(link);
+				elArray.push(card);
+				elements++;
+				if (elements == 3) {
+					var flex = $('<div class="flex-container">');
+					flex.append(elArray);
+					$('.recipeList').append(flex);
+					elements = 0;
+					elArray = [];
+				}
+
+			};
+		});
 };
 
+$(document).on('click', '.addVids', function () {
+	$('.article').empty();
+	$('.article').append(`<button type="button" class="btn btn-primary back">Back</button>`);
 
-// =========================
-// Find button functionality
-// =========================
+	$('.article').append(ingShowList[parseInt($(this).attr('data-content'))]);
+});
+
 $(".addRecipe").on("click", function (e) {
-    $("#recipe-list").empty();
-	// Prevent form from submitting
+	$("#recipe-list").empty();
 	e.preventDefault();
 
-	//Grab the user input from the main word search text box.
 	userInput = $("#targetRecepi").val().trim().toLowerCase();
 
-	// Integrate user input into our ajax request
 	var searchURL = queryURLbase + userInput;
-	testAjax(searchURL);
-
-	// Clear previous search
-	
+	doAjax(searchURL);
 	$("#targetRecepi").val("");
 });
 

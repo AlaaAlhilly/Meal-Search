@@ -34,6 +34,13 @@
     line-height: 75px;
     font-size: 30px;
   }
-  .vids{
-      display: none;
-  }
+.recipeInfo{
+    display: none;
+}
+.videoContainer{
+    margin-bottom: 25px;
+}
+.list{
+    margin-top: 20px;
+}
+

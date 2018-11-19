@@ -103,21 +103,3 @@ $(".addRecipe").on("click", function (e) {
 	doAjax(searchURL);
 	$("#targetRecepi").val("");
 });
-
-/*
-calories: 7212.227545168801
-cautions: []
-dietLabels: ["Low-Carb"]
-digest: (24) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-healthLabels: (4) ["Sugar-Conscious", "Peanut-Free", "Tree-Nut-Free", "Alcohol-Free"]
-image: "https://www.edamam.com/web-img/98a/98aa5d5cc0d88b28c2b9221a099b1a14.jpg"
-ingredientLines: (2) ["8-lb. shell roast of beef", "Coarse salt and freshly ground black pepper"]
-ingredients: (3) [{…}, {…}, {…}]
-label: "Roast Beef"
-shareAs: "http://www.edamam.com/recipe/roast-beef-3921adf30bb0c9736b9ac30f447f8a63/beef"
-source: "Saveur"
-totalDaily: {ENERC_KCAL: {…}, FAT: {…}, FASAT: {…}, CHOCDF: {…}, FIBTG: {…}, …}
-totalNutrients: {ENERC_KCAL: {…}, FAT: {…}, FASAT: {…}, FAMS: {…}, FAPU: {…}, …}
-totalTime: 127
-totalWeight: 3656.4951564046273
-*/

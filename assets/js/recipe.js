@@ -12,8 +12,7 @@ function doAjax(queryURL) {
 		.then((resp) => resp.json())
 		.then(function (data) {
 			console.log(data);
-			var elArray = [];
-			var elements = 0;
+			var flex = $('<div class="row">');
 			for (var i = 0; i < 9; i++) {
 				var ingList = $(`<table class="table">
 										<thead class="thead-dark">
@@ -50,7 +49,7 @@ function doAjax(queryURL) {
 				instructions.push(data.hits[i].recipe.url);
 				digests.push(digestList);
 				ingShowList.push(ingList);
-				var card = $('<div>');
+				var card = $('<div style="margin-bottom:20px" class="col-s-12 col-m-6 col-lg-4">');
 
 				var img = $("<img>");
 				imgAPI = data.hits[i].recipe.image;
@@ -59,20 +58,14 @@ function doAjax(queryURL) {
 
 				title = data.hits[i].recipe.label;
 
-				var link = $(`<a type="button" data-content=${i} href="#" style="color:white;text-decoration:none" class="addVids">`);
+				var link = $(`<a type="button" data-content=${i} href="#" style="text-decoration:none;font-size:25px;" class="addVids">`);
 				link.text(title);
 				card.append(link);
-				elArray.push(card);
-				elements++;
-				if (elements == 3) {
-					var flex = $('<div class="flex-container">');
-					flex.append(elArray);
-					$('.recipeList').append(flex);
-					elements = 0;
-					elArray = [];
-				}
+				flex.append(card);
+				
 
 			};
+			$('.recipeList').append(flex);
 		});
 };
 

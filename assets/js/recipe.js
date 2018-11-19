@@ -1,6 +1,6 @@
 
 
-var queryURLbase = "https://api.edamam.com/search?&app_id=192e6853&app_key=97cc74f29550dbca8f09e9ac463a150f&from=0&to=9&q=";
+var queryURLbase = "https://api.edamam.com/search?&app_id=192e6853&app_key=97cc74f29550dbca8f09e9ac463a150f&from=0&to=13&q=";
 var ingShowList = [];
 var digests = [];
 var calories = [];
@@ -13,7 +13,7 @@ function doAjax(queryURL) {
 		.then(function (data) {
 			console.log(data);
 			var flex = $('<div class="row">');
-			for (var i = 0; i < 9; i++) {
+			for (var i = 0; i < 13; i++) {
 				var ingList = $(`<table class="table">
 										<thead class="thead-dark">
 										<tr>
@@ -32,7 +32,7 @@ function doAjax(queryURL) {
 								</thead>
 								<tbody>`
 						);
-				for (var j = 0; j < data.hits[i].recipe.ingredientLines.length; j++) {
+				for (var j = 0; j < data.hits[i].recipe.ingredients.length; j++) {
 					var ing = data.hits[i].recipe.ingredients[j].text;
 					var ingweight = data.hits[i].recipe.ingredients[j].weight;
 					ingList.append(`<tr class="table-warning"><td class="table-warning">${ing}</td><td class="table-warning">${ingweight}</td></tr>`)
@@ -58,8 +58,10 @@ function doAjax(queryURL) {
 
 				title = data.hits[i].recipe.label;
 
-				var link = $(`<a type="button" data-content=${i} href="#" style="text-decoration:none;font-size:25px;" class="addVids">`);
-				link.text(title);
+				var link = $(`<a  data-content=${i} href="#" style="text-decoration:none;" class="addVids">`);
+				var span = $('<span class="badge badge-pill badge-dark" style="margin-top:10px;">');
+				span.text(title);
+				link.append(span);
 				card.append(link);
 				flex.append(card);
 				

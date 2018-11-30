@@ -9,65 +9,121 @@
     <link rel="shortcut icon" href="">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+        crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Englebert" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Meal Searcher</title>
+
+    <title>Lazy Grazer</title>
 </head>
 
 <body>
-    <div class="jumbotron jumbotron-fluid text-center">
-        <div class="container">
-            <h1 class="display-4">Get a Meal from ingredients in your fridge</h1>
-            <div class="container buttons">
 
+    <div class="wrapper">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <img src="assets/images/lazygrazerlogo.png">
             </div>
-            <div class="input-group mb-3">
-                <input id="targetRecepi" type="text" class="form-control" placeholder="" aria-label="Example text with button addon"
-                    aria-describedby="button-addon1">
-            </div>
-            <button type="button" class="btn btn-primary addRecipe">Search Meal</button>
-        </div>
-    </div>
-    <div class="container ">
-        <div class="container recipeList">
+            <div class="sidebarText">
+                <ul class="list-unstyled CTAs">
+                    <li>
+                        <h5>Enter ingredients:</h5>
+                    </li>
+                    <br>
+                    <li>
+                        <div class="input-group mb-3">
+                            <input id="targetRecipe" type="text" class="form-control" placeholder="cheese, onions, salt"
+                                aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        </div>
+                    </li>
+                    <li>
+                        <button type="button" class="btn btn-dark addRecipe">Find a Meal</button>
+                    </li>
 
-        </div>
-        <div class="container recipeInfo">
-                <ul class="nav nav-tabs">
+                </ul>
+            </div>
+
+        </nav>
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-dark">
+                        <i class="fas fa-utensils fa-align-left"></i>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+                    <h2 id="navTitle">LazyGrazer</h2>
+                </div>
+            </nav>
+
+            <div class="container">
+                <section id="portfolio" class="portfolio">
+                    <div class="container">
+                        <div class="row">
+                            <div class="portfolio_content text-center recipeList" data-wow-duration="5s">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <div class="container recipeInfo">
+                    <ul class="nav nav-tabs">
                         <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#recipe">Recipe List</a>
+                            <a class="nav-link" data-toggle="tab" href="#recipe">Recipe List</a>
                         </li>
                         <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#videos">How to Make videos</a>
+                            <a class="nav-link" data-toggle="tab" href="#videos">How to Make videos</a>
                         </li>
-                       
-                      </ul>
-            
 
-            <div class="tab-content recipeContent">
-                <div id="recipe" class="tab-pane fadein active">
-                    <h3>Recipe List</h3>
-                    <div class="container article">
+                    </ul>
 
+                    <div class="tab-content recipeContent">
+                        <div id="recipe" class="tab-pane fadein active">
 
-                    </div>
-                </div>
-                <div id="videos" class="container tab-pane fade">
-                    <h3>How to make it Videos</h3>
-                    <div class="container vids">
+                        <!-- <h3>Recipe List</h3> -->
+                            <div class="container article">
+                            </div>
 
-
+                        </div>
+                        <div id="videos" class="container tab-pane fade">
+                            <h3>How to make it Videos</h3>
+                            <div class="container vids"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <script src="assets/js/youtube.js"></script>
-    <script src="assets/js/recipe.js"></script>
-    <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
+        </div>
+
+        <script src="assets/js/youtube.js"></script>
+        <script src="assets/js/recipe.js"></script>
+        <script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
+
+        <!-- jQuery CDN - Slim version (=without AJAX) -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <!-- Popper.JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="assets/js/plotly.js"></script>
 </body>
 
 </html>

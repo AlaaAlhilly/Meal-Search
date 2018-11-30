@@ -1,5 +1,9 @@
 $(".recipeInfo").hide();
-
+$(document).ready(function () {
+	$('#sidebarCollapse').on('click', function () {
+		$('#sidebar').toggleClass('active');
+	});
+});
 var queryURLbase = "https://api.edamam.com/search?&app_id=192e6853&app_key=97cc74f29550dbca8f09e9ac463a150f&from=0&to=12&q=";
 var ingShowList = [];
 var ingredientList = [];

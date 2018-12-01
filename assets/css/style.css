@@ -11,6 +11,8 @@ body {
     margin-right: 0;
     font-family: 'roboto', sans-serif;
     font-weight: 300;
+    padding-top: 1em;
+
 }
 
 p {
@@ -326,4 +328,11 @@ table th,.vids,.article,.tab-pane a{
 	font-size:2.5725rem;
 	color:#fff;
 	line-height:3rem;
+}
+.CTAs li{
+    margin-bottom: 10px;
+}
+#diary{
+
+    margin: 15px 0 15px 0;
 }

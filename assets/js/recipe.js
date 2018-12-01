@@ -323,10 +323,11 @@ $(document).on("click", "#delete", function () {
 	$.each($("input[name='is_check']:checked"), function (index,v) {
 		if($(this).val() === data){
 			$(this).prop('checked', false);
-			$(`#${data}`).remove();
-			el.remove();
+
 		}
 	});
+	$(`#${data}`).remove();
+	el.remove();
 	tFunction();
 });
 //check box check ==========================
